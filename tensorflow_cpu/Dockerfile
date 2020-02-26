@@ -1,13 +1,11 @@
-FROM tensorflow/tensorflow:nightly-py3-jupyter
-ENV GRANT_SUDO=yes
+FROM tensorflow/tensorflow:1.4.1-devel-py3
 
-USER root
 # Install gensim
-RUN conda install -y gensim
+RUN pip install gensim
 
 # Install MeCab
-RUN sudo apt update \
-  && sudo apt install -y --no-install-recommends curl file mecab libmecab-dev mecab-ipadic-utf8 \
+RUN apt update \
+  && apt install -y --no-install-recommends curl file sudo swig mecab libmecab-dev mecab-ipadic-utf8 \
   && pip install mecab-python3
 
 # Install mecab-ipadic-NEologd
@@ -48,7 +46,12 @@ RUN cd /tmp \
   && cd python \
   && python setup.py build \
   && python setup.py install \
-  && cd / \
-  && rm /tmp/cabocha-0.69.tar.bz2 \
-  && rm -rf /tmp/cabocha-0.69 \
-  && ldconfig
+  && cd /
+
+# Install JupyterLab
+RUN pip install jupyterlab \
+  && jupyter serverextension enable --py jupyterlab --sys-prefix
+
+ENV SHELL=/bin/bash
+
+CMD jupyter lab --allow-root --ip=0.0.0.0
