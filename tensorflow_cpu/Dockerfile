@@ -5,7 +5,7 @@ RUN pip install gensim
 
 # Install MeCab
 RUN apt update \
-  && apt install -y --no-install-recommends curl file sudo swig mecab libmecab-dev mecab-ipadic-utf8 \
+  && apt install -y --no-install-recommends wget git curl file sudo swig mecab libmecab-dev mecab-ipadic-utf8 \
   && pip install mecab-python3
 
 # Install mecab-ipadic-NEologd
