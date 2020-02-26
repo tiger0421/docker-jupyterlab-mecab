@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.4.1-devel-py3
+FROM tensorflow/tensorflow:1.15.2-py3-jupyter
 
 # Install gensim
 RUN pip install gensim
