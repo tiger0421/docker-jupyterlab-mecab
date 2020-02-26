@@ -46,11 +46,12 @@ RUN cd /tmp \
   && cd python \
   && python setup.py build \
   && python setup.py install \
-  && cd / \
+  && cd /
 
 # Install JupyterLab
 RUN pip install jupyterlab \
-  && jupyter serverextension enable --py jupyterlab --sys-prefix \
-  && export SHELL=/bin/bash
+  && jupyter serverextension enable --py jupyterlab --sys-prefix
+
+ENV SHELL=/bin/bash
 
 CMD jupyter lab --allow-root --ip=0.0.0.0
