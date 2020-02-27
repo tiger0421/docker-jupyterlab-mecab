@@ -1,4 +1,4 @@
-FROM docker pull tensorflow/tensorflow:2.0.1-gpu-jupyter
+FROM tensorflow/tensorflow:2.0.1-gpu-jupyter
 
 # Install gensim
 RUN pip install gensim
