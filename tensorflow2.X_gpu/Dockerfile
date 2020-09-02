@@ -10,7 +10,7 @@ RUN apt update && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    && pip install mecab-python3
+    pip install mecab-python3
 
 # Install mecab-ipadic-NEologd
 RUN mkdir /tmp/neologd \
