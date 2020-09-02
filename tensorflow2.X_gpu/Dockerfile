@@ -4,8 +4,9 @@ FROM tensorflow/tensorflow:2.3.0-gpu-jupyter
 RUN pip install gensim
 
 # Install MeCab
-RUN apt update \
-  && apt install -y --no-install-recommends wget git curl file sudo swig mecab libmecab-dev mecab-ipadic-utf8 && \
+RUN apt update && \
+    apt upgrade -y && \
+    apt install -y --no-install-recommends wget git curl file sudo swig mecab libmecab-dev mecab-ipadic-utf8 && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
