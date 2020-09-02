@@ -1,12 +1,15 @@
-FROM tensorflow/tensorflow:2.1.0-py3-jupyter
+FROM tensorflow/tensorflow:2.3.0-jupyter
 
 # Install gensim
 RUN pip install gensim
 
 # Install MeCab
 RUN apt update \
-  && apt install -y --no-install-recommends wget git curl file sudo swig mecab libmecab-dev mecab-ipadic-utf8 \
-  && pip install mecab-python3
+  && apt install -y --no-install-recommends wget git curl file sudo swig mecab libmecab-dev mecab-ipadic-utf8 && \
+    apt autoremove -y && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    && pip install mecab-python3
 
 # Install mecab-ipadic-NEologd
 RUN mkdir /tmp/neologd \
