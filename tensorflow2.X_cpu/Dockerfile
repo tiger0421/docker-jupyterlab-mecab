@@ -46,7 +46,7 @@ RUN cd /tmp \
   && export CPPFLAGS=-I/usr/local/include \
   && ./configure --with-mecab-config=`which mecab-config` --with-charset=utf8 \
   && make \
-  && make install \
+  && make install \local/etc/mecabrc
   && cd python \
   && python setup.py build \
   && python setup.py install \
@@ -56,6 +56,7 @@ RUN cd /tmp \
 RUN pip install jupyterlab \
   && jupyter serverextension enable --py jupyterlab --sys-prefix
 
+RUN ln /etc/mecabrc /usr/local/etc/mecabrc
 ENV SHELL=/bin/bash
 WORKDIR /root
 CMD jupyter lab --allow-root --ip=0.0.0.0
