@@ -57,5 +57,5 @@ RUN pip install jupyterlab \
   && jupyter serverextension enable --py jupyterlab --sys-prefix
 
 ENV SHELL=/bin/bash
-
+WORKDIR /root
 CMD jupyter lab --allow-root --ip=0.0.0.0
