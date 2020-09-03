@@ -56,6 +56,7 @@ RUN cd /tmp \
 RUN pip install jupyterlab \
   && jupyter serverextension enable --py jupyterlab --sys-prefix
 
+RUN ln /etc/mecabrc /usr/local/etc/mecabrc
 ENV SHELL=/bin/bash
 WORKDIR /root
 CMD jupyter lab --allow-root --ip=0.0.0.0
