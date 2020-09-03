@@ -46,7 +46,7 @@ RUN cd /tmp \
   && export CPPFLAGS=-I/usr/local/include \
   && ./configure --with-mecab-config=`which mecab-config` --with-charset=utf8 \
   && make \
-  && make install \local/etc/mecabrc
+  && make install \
   && cd python \
   && python setup.py build \
   && python setup.py install \
